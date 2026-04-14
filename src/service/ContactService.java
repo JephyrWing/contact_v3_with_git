@@ -25,4 +25,9 @@ public class ContactService {
             System.out.println(state.getStore().get(i));
         }
     }
+
+    public Map<Long, Contact> findAll() {
+        System.out.println(("[ContactService.findAll()]"));
+        return repository.findAll();
+    }
 }

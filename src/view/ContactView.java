@@ -8,11 +8,11 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class ContactView {
-    private final ContactService contactservice;
+    private final ContactService service;
     private final Scanner sc;
 
-    public ContactView(ContactService contactService, Scanner sc) {
-        this.contactservice = contactService;
+    public ContactView(ContactService Service, Scanner sc) {
+        this.service = Service;
         this.sc = sc;
     }
 
@@ -50,6 +50,12 @@ public class ContactView {
         //System.out.println("Read All");
         // 서비스에게 전체 데이터를 요청한다.
         System.out.println("[ContactView.readAll()]");
+        Map<Long,Contact> store = service.findAll();
+        if (store != null) {
+            for (Long i : store.keySet()) {
+                System.out.println(store.get(i));
+            }
+        }
     }
     private void create(){
         System.out.println("[ContactView.create()]");
@@ -66,7 +72,7 @@ public class ContactView {
         System.out.println("전화번호: ");
         phone = sc.next();
         // 받은 값들을 service.contactservice.insert() 전달
-        contactservice.insert(name, age, phone);
+        service.insert(name, age, phone);
     }
     private void update(){
         // 전체 리스트를 보여준다.
