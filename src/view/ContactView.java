@@ -1,5 +1,6 @@
 package view;
 
+import service.ContactService;
 import vo.Contact;
 
 import java.util.Map;
@@ -7,10 +8,11 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class ContactView {
-    //private ContactService contactService = new ContactService();
+    private final ContactService contactservice;
     private final Scanner sc;
 
-    public ContactView(Scanner sc) {
+    public ContactView(ContactService contactService, Scanner sc) {
+        this.contactservice = contactService;
         this.sc = sc;
     }
 
@@ -50,10 +52,21 @@ public class ContactView {
         System.out.println("[ContactView.readAll()]");
     }
     private void create(){
+        System.out.println("[ContactView.create()]");
         // 처리 순서
         // 화면에서 이름과 전화번호를 입력받는다.
         // 입력받은 내용을 서비스에 전달한다.
-        System.out.println("[ContactView.create()]");
+        String name;
+        int age;
+        String phone;
+        System.out.println("이름: ");
+        name = sc.next();
+        System.out.println("나이: ");
+        age = sc.nextInt();
+        System.out.println("전화번호: ");
+        phone = sc.next();
+        // 받은 값들을 service.contactservice.insert() 전달
+        contactservice.insert(name, age, phone);
     }
     private void update(){
         // 전체 리스트를 보여준다.
