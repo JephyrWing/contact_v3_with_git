@@ -45,6 +45,16 @@ public class ContactView {
     }
     private void search(){
         System.out.println("[ContactView.search()]");
+        System.out.println("검색어 입력 : ");
+        String keyword = sc.next();
+        Map<Long, Contact> result = service.search(keyword);
+        if(result.isEmpty()){
+            System.out.println("검색 결과가 없어요.");
+        } else {
+            for (Long key : result.keySet()) {
+                System.out.println(result.get(key));
+            }
+        }
     }
     private void readAll() {
         //System.out.println("Read All");

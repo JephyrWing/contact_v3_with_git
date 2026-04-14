@@ -3,6 +3,7 @@ package repository;
 import state.ContactState;
 import vo.Contact;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ContactRepository {
@@ -48,5 +49,15 @@ public class ContactRepository {
         System.out.println("[ContactRepository.update()]");
         state.getStore().put(updateId, updatecontact);
         System.out.println("수정 완료");
+    }
+
+    public Map<Long, Contact> search(String keyword) {
+        Map<Long, Contact> result = new HashMap<>();
+        for (Long key : state.getStore().keySet()) {
+            if(state.getStore().get(key).getName().contains(keyword)) {
+                result.put(key, state.getStore().get(key));
+            }
+        }
+        return result;
     }
 }

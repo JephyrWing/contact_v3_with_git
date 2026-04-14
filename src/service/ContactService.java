@@ -4,6 +4,7 @@ import repository.ContactRepository;
 import state.ContactState;
 import vo.Contact;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ContactService {
@@ -50,5 +51,10 @@ public class ContactService {
         } else {
             System.out.println("존재하지 않는 아이디입니다.");
         }
+    }
+
+    public Map<Long, Contact> search(String keyword) {
+        System.out.println("[ContactService.search()]");
+        return repository.search(keyword);
     }
 }
