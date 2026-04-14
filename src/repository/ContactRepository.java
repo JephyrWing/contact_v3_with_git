@@ -13,6 +13,7 @@ public class ContactRepository {
     }
 
     public void save(Long nextId, Contact contact) {
+        System.out.println(("[ContactRepository.save()]"));
         state.getStore().put(nextId, contact);
         System.out.println("저장완료");
         state.Idincrement();
@@ -20,10 +21,22 @@ public class ContactRepository {
     }
 
     public Map<Long, Contact> findAll() {
-        if (state.getStore() == null) {
+        System.out.println(("[ContactRepository.findAll()]"));
+        if (state.getStore().size() == 0) {
             System.out.println("저장된 자료가 없어요.");
             return null;
         }
         return state.getStore();
+    }
+
+    public void delete(Long delId) {
+        System.out.println("[ContactRepository.delete()]");
+        state.getStore().remove(delId);
+        System.out.println("삭제가 완료되었습니다.");
+    }
+
+    public boolean findById(Long delId) {
+        System.out.println("[ContactRepository.findById()]");
+        return state.getStore().containsKey(delId);
     }
 }

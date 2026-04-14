@@ -30,4 +30,14 @@ public class ContactService {
         System.out.println(("[ContactService.findAll()]"));
         return repository.findAll();
     }
+
+    public void delete(Long delId) {
+        System.out.println("[ContactService.delete()]");
+        boolean existId = repository.findById(delId);
+        if (existId) {
+            repository.delete(delId);
+        } else {
+            System.out.println("존재하지 않는 아이디입니다.");
+        }
+    }
 }

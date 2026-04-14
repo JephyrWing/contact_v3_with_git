@@ -84,6 +84,9 @@ public class ContactView {
         // System.out.println("Delete");
         // 1. 전체 리스트를 불러온다.
         System.out.println("[ContactView.delete()]");
+        System.out.println("삭제 아이디: ");
+        Long delId = sc.nextLong();
+        service.delete(delId);
     }
 
 }
