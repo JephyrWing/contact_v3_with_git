@@ -40,4 +40,15 @@ public class ContactService {
             System.out.println("존재하지 않는 아이디입니다.");
         }
     }
+
+    public void update(Long updateId, String updatePhone) {
+        System.out.println("[ContactService.update()]");
+        Contact updatecontact = repository.findById2(updateId);
+        if (updatecontact != null) {
+                updatecontact.setPhone(updatePhone);
+                repository.update(updateId, updatecontact);
+        } else {
+            System.out.println("존재하지 않는 아이디입니다.");
+        }
+    }
 }

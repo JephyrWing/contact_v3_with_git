@@ -39,4 +39,14 @@ public class ContactRepository {
         System.out.println("[ContactRepository.findById()]");
         return state.getStore().containsKey(delId);
     }
+    public Contact findById2(Long i) {
+        System.out.println("[ContactRepository.findById2()]");
+        return state.getStore().get(i);
+    }
+
+    public void update(Long updateId, Contact updatecontact) {
+        System.out.println("[ContactRepository.update()]");
+        state.getStore().put(updateId, updatecontact);
+        System.out.println("수정 완료");
+    }
 }

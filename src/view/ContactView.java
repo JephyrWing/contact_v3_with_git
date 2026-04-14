@@ -79,6 +79,11 @@ public class ContactView {
         //System.out.println("Update");
         // 1. 전체 리스트를 불러온다.
         System.out.println("[ContactView.update()]");
+        System.out.println("수정할 아이디 입력: ");
+        Long updateId = sc.nextLong();
+        System.out.println("수정할 전화번호 입력: ");
+        String updatePhone = sc.next();
+        service.update(updateId, updatePhone);
     }
     private void delete(){
         // System.out.println("Delete");
